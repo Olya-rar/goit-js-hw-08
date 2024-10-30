@@ -76,14 +76,14 @@ container.addEventListener('click', clickGaleryOpen);
 function createGalery(arr) {
   return arr
     .map(
-      imageG =>
-        `<li class="gallery-item" data-id="${imageG.id}">
-        <a class="gallery-link" href="${imageG.original}">
+      imaged =>
+        `<li class="gallery-item" data-id="${imaged.id}">
+        <a class="gallery-link" href="${imaged.original}">
           <img
             class="gallery-image"
-            src="${imageG.preview}"
-            data-source="${imageG.original}"
-            alt="${imageG.description}"
+            src="${imaged.preview}"
+            data-source="${imaged.original}"
+            alt="${imaged.description}"
           />
         </a>
       </li>`
@@ -100,11 +100,11 @@ function clickGaleryOpen(event) {
   const imageCurrent = event.target.closest('.gallery-item');
   const id = imageCurrent.dataset.id;
 
-  const imegGalerry = images.find(item => item.id === +id);
+  const imageGallery = images.find(item => item.id === +id);
 
   const instance = basicLightbox.create(`
     <div class="modal">
-      <img src="${imegGalerry.original}" alt="${imegGalerry.description}" />
+      <img src="${imageGallery.original}" alt="${imageGallery.description}" />
     </div>`);
   instance.show();
 }
